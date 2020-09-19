@@ -15,6 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPg-m2-TIj">
+                                <rect key="frame" x="20" y="285" width="374" height="305"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="305" id="rgA-rb-HwA"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-LD-yhb" userLabel="Bottom Textfield">
                                 <rect key="frame" x="80" y="520" width="254" height="70"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
@@ -42,14 +48,6 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JiQ-go-Zz5"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htN-EB-woO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="IYi-tm-yYq"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Zvn-dh-XQc"/>
-                                    <barButtonItem title="Cancel" id="CM5-17-ku8"/>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPF-nb-zw8" userLabel="Top Textfield">
                                 <rect key="frame" x="147.5" y="300" width="119" height="70"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
@@ -59,14 +57,16 @@
                                     <action selector="topTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="YTS-v1-uz4"/>
                                 </connections>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPg-m2-TIj">
-                                <rect key="frame" x="20" y="285" width="374" height="305"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="305" id="rgA-rb-HwA"/>
-                                </constraints>
-                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htN-EB-woO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="IYi-tm-yYq"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Zvn-dh-XQc"/>
+                                    <barButtonItem title="Cancel" id="CM5-17-ku8"/>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="htN-EB-woO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Cs-cN-y2B"/>
                             <constraint firstItem="Zlr-2q-O7k" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9A0-Yv-h3S"/>
