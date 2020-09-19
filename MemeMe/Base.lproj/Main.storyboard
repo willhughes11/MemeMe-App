@@ -15,6 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-LD-yhb" userLabel="Bottom Textfield">
+                                <rect key="frame" x="80" y="520" width="254" height="70"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="bottomTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="477-9b-xqi"/>
+                                    <action selector="bottomTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="sHe-07-0DY"/>
+                                </connections>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlr-2q-O7k">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -33,15 +42,16 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JiQ-go-Zz5"/>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPg-m2-TIj">
-                                <rect key="frame" x="20" y="263" width="374" height="370"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="370" id="pJf-hl-K7G"/>
-                                    <constraint firstAttribute="width" constant="374" id="uV1-CW-QbD"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPF-nb-zw8" userLabel="Top Textfield">
-                                <rect key="frame" x="147.5" y="185" width="119" height="70"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htN-EB-woO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="IYi-tm-yYq"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Zvn-dh-XQc"/>
+                                    <barButtonItem title="Cancel" id="CM5-17-ku8"/>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPF-nb-zw8" userLabel="Top Textfield">
+                                <rect key="frame" x="147.5" y="300" width="119" height="70"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -49,28 +59,29 @@
                                     <action selector="topTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="YTS-v1-uz4"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-LD-yhb" userLabel="Bottom Textfield">
-                                <rect key="frame" x="80" y="641" width="254" height="70"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="bottomTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="477-9b-xqi"/>
-                                    <action selector="bottomTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="sHe-07-0DY"/>
-                                </connections>
-                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPg-m2-TIj">
+                                <rect key="frame" x="20" y="285" width="374" height="305"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="305" id="rgA-rb-HwA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="BWF-LD-yhb" firstAttribute="top" secondItem="FPg-m2-TIj" secondAttribute="bottom" constant="8" id="3hN-p8-d5t"/>
+                            <constraint firstItem="htN-EB-woO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Cs-cN-y2B"/>
                             <constraint firstItem="Zlr-2q-O7k" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9A0-Yv-h3S"/>
                             <constraint firstItem="Zlr-2q-O7k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ewn-sV-Shv"/>
                             <constraint firstItem="Zlr-2q-O7k" firstAttribute="centerX" secondItem="FPg-m2-TIj" secondAttribute="centerX" id="GRe-bj-GQ0"/>
-                            <constraint firstItem="FPg-m2-TIj" firstAttribute="top" secondItem="IPF-nb-zw8" secondAttribute="bottom" constant="8" id="Kp0-zp-rWq"/>
                             <constraint firstItem="FPg-m2-TIj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OIQ-nz-xVa"/>
+                            <constraint firstItem="BWF-LD-yhb" firstAttribute="top" secondItem="FPg-m2-TIj" secondAttribute="bottom" constant="-70" id="WaV-aW-IkZ"/>
+                            <constraint firstItem="htN-EB-woO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z6Y-ll-29b"/>
                             <constraint firstItem="IPF-nb-zw8" firstAttribute="centerX" secondItem="BWF-LD-yhb" secondAttribute="centerX" id="Zx6-75-38v"/>
-                            <constraint firstItem="FPg-m2-TIj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ebu-Pf-YHW"/>
+                            <constraint firstItem="FPg-m2-TIj" firstAttribute="top" secondItem="IPF-nb-zw8" secondAttribute="bottom" constant="-85" id="eUk-OU-s6P"/>
+                            <constraint firstItem="FPg-m2-TIj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-10.5" id="ebu-Pf-YHW"/>
                             <constraint firstItem="IPF-nb-zw8" firstAttribute="centerX" secondItem="FPg-m2-TIj" secondAttribute="centerX" id="eju-0p-Qw5"/>
+                            <constraint firstItem="FPg-m2-TIj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oYM-FM-JLb"/>
                             <constraint firstItem="Zlr-2q-O7k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uGG-Ms-O2T"/>
+                            <constraint firstItem="htN-EB-woO" firstAttribute="leading" secondItem="Zlr-2q-O7k" secondAttribute="leading" id="yxF-Qn-is3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -84,10 +95,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="130.43478260869566" y="137.27678571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
