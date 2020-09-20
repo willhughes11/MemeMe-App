@@ -162,4 +162,14 @@ func save() {
         }
         present(shareSheet, animated: true, completion: nil)
     }
+    @IBAction func resetToDefault(_ sender: Any) {
+        shareButton.isEnabled = false
+        topTextfield.defaultTextAttributes = memeTextAttributes
+        topTextfield.textAlignment = NSTextAlignment.center
+        topTextfield.text = "TOP"
+        bottomTextfield.defaultTextAttributes = memeTextAttributes
+        bottomTextfield.textAlignment = NSTextAlignment.center
+        bottomTextfield.text = "BOTTOM"
+        imagePickerView.image = nil
+    }
 }

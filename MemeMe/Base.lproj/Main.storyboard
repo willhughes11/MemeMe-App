@@ -27,7 +27,11 @@
                                                 <action selector="saveMeme" destination="BYZ-38-t0r" id="uIQ-rE-Yml"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="E6g-Ly-8oe"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="E6g-Ly-8oe">
+                                            <connections>
+                                                <action selector="resetToDefault:" destination="BYZ-38-t0r" id="Nvf-ea-DMn"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
