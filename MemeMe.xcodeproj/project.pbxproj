@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC5D6F2125183D4200431245 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D6F2025183D4200431245 /* Meme.swift */; };
 		CCE576932512B7180038B2D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576922512B7180038B2D9 /* AppDelegate.swift */; };
 		CCE576952512B7180038B2D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576942512B7180038B2D9 /* SceneDelegate.swift */; };
 		CCE576972512B7180038B2D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576962512B7180038B2D9 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC5D6F2025183D4200431245 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		CCE5768F2512B7180038B2D9 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE576922512B7180038B2D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCE576942512B7180038B2D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE576922512B7180038B2D9 /* AppDelegate.swift */,
+				CC5D6F2025183D4200431245 /* Meme.swift */,
 				CCE576942512B7180038B2D9 /* SceneDelegate.swift */,
 				CCE576962512B7180038B2D9 /* ViewController.swift */,
 				CCE576982512B7180038B2D9 /* Main.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE576972512B7180038B2D9 /* ViewController.swift in Sources */,
+				CC5D6F2125183D4200431245 /* Meme.swift in Sources */,
 				CCE576932512B7180038B2D9 /* AppDelegate.swift in Sources */,
 				CCE576952512B7180038B2D9 /* SceneDelegate.swift in Sources */,
 			);
@@ -294,7 +298,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = williamkhughes.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = williamkhughes.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

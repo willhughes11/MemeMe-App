@@ -40,7 +40,7 @@
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="topTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="8Xn-tP-18F"/>
+                                    <action selector="topMemeTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="RC6-Po-wWx"/>
                                     <action selector="topTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="YTS-v1-uz4"/>
                                 </connections>
                             </textField>
@@ -49,7 +49,7 @@
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="60"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="bottomTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="477-9b-xqi"/>
+                                    <action selector="bottomMemeTextFieldShouldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="MYv-tS-x04"/>
                                     <action selector="bottomTextfieldEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="sHe-07-0DY"/>
                                 </connections>
                             </textField>

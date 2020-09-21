@@ -7,8 +7,9 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
+    // MARK: Variable Declaration
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -22,6 +23,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var memeImage: UIImage!
     
+    var topDefaultText: String = "TOP"
+    var bottomDefaultText: String = "BOTTOM"
+    
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -33,24 +37,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return .lightContent
     }
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
+    // MARK: View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.isEnabled = false
-        topTextfield.defaultTextAttributes = memeTextAttributes
-        topTextfield.textAlignment = NSTextAlignment.center
-        topTextfield.text = "TOP"
-        bottomTextfield.defaultTextAttributes = memeTextAttributes
-        bottomTextfield.textAlignment = NSTextAlignment.center
-        bottomTextfield.text = "BOTTOM"
+        
+        setupTextField(topTextfield, topDefaultText)
+        setupTextField(bottomTextfield, bottomDefaultText)
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
@@ -60,19 +54,49 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+    
+    // MARK: Textfield Functions
+    func setupTextField(_ textField: UITextField, _ defaultText: String) {
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.text = defaultText
+    }
+    @IBAction func topTextfieldEdit(_ sender: UITextField) {
+        if (topTextfield.text == topDefaultText){
+            topTextfield.text = ""
+        }
+    }
+    
+    @IBAction func bottomTextfieldEdit(_ sender: UITextField) {
+        if (bottomTextfield.text == bottomDefaultText){
+            bottomTextfield.text = ""
+        }
+    }
+    
+    @IBAction func topMemeTextFieldShouldReturn(_ sender: Any) {
+        topTextfield.resignFirstResponder()
+    }
+    
+    @IBAction func bottomMemeTextFieldShouldReturn(_ sender: Any) {
+        bottomTextfield.resignFirstResponder()
+    }
+
+    // MARK: Image Functions
+    func pickFromSource(_ source: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.sourceType = source
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+        pickFromSource(.photoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        pickFromSource(.camera)
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imagePickerView.image = image
@@ -81,26 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    @IBAction func topTextfieldEdit(_ sender: UITextField) {
-        if (topTextfield.text == "TOP"){
-            topTextfield.text = ""
-        }
-    }
-    
-    @IBAction func bottomTextfieldEdit(_ sender: UITextField) {
-        if (bottomTextfield.text == "BOTTOM"){
-            bottomTextfield.text = ""
-        }
-    }
-    
-    @IBAction func topTextFieldShouldReturn(_ sender: Any) {
-        topTextfield.resignFirstResponder()
-    }
-    
-    @IBAction func bottomTextFieldShouldReturn(_ sender: Any) {
-        bottomTextfield.resignFirstResponder()
-    }
-    
+    // MARK: Keyboard Notification Functions
     @objc func keyboardWillShow(_ notification: Notification) {
         if bottomTextfield.isEditing, view.frame.origin.y == 0 {
             view.frame.origin.y -= getKeyboardHeight(notification)
@@ -123,53 +128,54 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
-        func generateMemedImage() -> UIImage {
-            // Render view to an image
-            navigationBar.isHidden = true
-            toolbar.isHidden = true
-            
-            navigationController?.setToolbarHidden(true, animated: false)
-            UIGraphicsBeginImageContext(self.view.frame.size)
-            view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-            let memedImage = UIGraphicsGetImageFromCurrentImageContext()!  // <<< CHANGE 3
-            UIGraphicsEndImageContext()
-            navigationController?.setToolbarHidden(false, animated: false)
-            
-            navigationBar.isHidden = false
-            toolbar.isHidden = false
-            
-            return memedImage
-        }
-
-func save() {
-    memeImage = generateMemedImage()
-    _ = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
-    }
     
-@IBAction func saveMeme(){
-    let memedImage: UIImage = generateMemedImage()
-    let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-    shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
-    if (completed) {
-        self.save()
-            }
-        }
-        present(shareSheet, animated: true, completion: nil)
+    // MARK: Meme Generation Functions
+    func generateMemedImage() -> UIImage {
+        navigationBar.isHidden = true
+        toolbar.isHidden = true
+            
+        navigationController?.setToolbarHidden(true, animated: false)
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        navigationController?.setToolbarHidden(false, animated: false)
+            
+        navigationBar.isHidden = false
+        toolbar.isHidden = false
+            
+        return memedImage
     }
+
+    func save() {
+        memeImage = generateMemedImage()
+        _ = MemeStruct.Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
+        }
+    
+    @IBAction func saveMeme(){
+        let memedImage: UIImage = generateMemedImage()
+        let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
+            if (completed) {
+                self.save()
+                }
+            }
+            present(shareSheet, animated: true, completion: nil)
+        }
+    
+    // MARK: Dismiss Meme Function
     @IBAction func resetToDefault(_ sender: Any) {
         shareButton.isEnabled = false
         topTextfield.defaultTextAttributes = memeTextAttributes
         topTextfield.textAlignment = NSTextAlignment.center
-        topTextfield.text = "TOP"
+        topTextfield.text = topDefaultText
         bottomTextfield.defaultTextAttributes = memeTextAttributes
         bottomTextfield.textAlignment = NSTextAlignment.center
-        bottomTextfield.text = "BOTTOM"
+        bottomTextfield.text = bottomDefaultText
         imagePickerView.image = nil
     }
 }
