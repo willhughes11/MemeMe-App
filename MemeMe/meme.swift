@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class MemeStruct: UIImagePickerController {
+class Meme: UIImagePickerController {
     
         struct Meme {
         var topText: String

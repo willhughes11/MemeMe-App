@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CC5D6F2125183D4200431245 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D6F2025183D4200431245 /* Meme.swift */; };
+		CC7BC8E4251AEB3F00AC8610 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BC8E3251AEB3F00AC8610 /* MemeTableViewController.swift */; };
+		CC7BC8E7251AEB5F00AC8610 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BC8E6251AEB5F00AC8610 /* MemeCollectionViewController.swift */; };
 		CCE576932512B7180038B2D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576922512B7180038B2D9 /* AppDelegate.swift */; };
 		CCE576952512B7180038B2D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576942512B7180038B2D9 /* SceneDelegate.swift */; };
 		CCE576972512B7180038B2D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE576962512B7180038B2D9 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		CC5D6F2025183D4200431245 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		CC7BC8E3251AEB3F00AC8610 /* MemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
+		CC7BC8E6251AEB5F00AC8610 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 		CCE5768F2512B7180038B2D9 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE576922512B7180038B2D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCE576942512B7180038B2D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,12 +63,14 @@
 			isa = PBXGroup;
 			children = (
 				CCE576922512B7180038B2D9 /* AppDelegate.swift */,
-				CC5D6F2025183D4200431245 /* Meme.swift */,
 				CCE576942512B7180038B2D9 /* SceneDelegate.swift */,
 				CCE576962512B7180038B2D9 /* ViewController.swift */,
+				CC7BC8E3251AEB3F00AC8610 /* MemeTableViewController.swift */,
+				CC7BC8E6251AEB5F00AC8610 /* MemeCollectionViewController.swift */,
+				CC5D6F2025183D4200431245 /* Meme.swift */,
 				CCE576982512B7180038B2D9 /* Main.storyboard */,
-				CCE5769B2512B71D0038B2D9 /* Assets.xcassets */,
 				CCE5769D2512B71D0038B2D9 /* LaunchScreen.storyboard */,
+				CCE5769B2512B71D0038B2D9 /* Assets.xcassets */,
 				CCE576A02512B71D0038B2D9 /* Info.plist */,
 			);
 			path = MemeMe;
@@ -97,7 +103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "William K Hughes";
 				TargetAttributes = {
 					CCE5768E2512B7180038B2D9 = {
@@ -144,6 +150,8 @@
 				CCE576972512B7180038B2D9 /* ViewController.swift in Sources */,
 				CC5D6F2125183D4200431245 /* Meme.swift in Sources */,
 				CCE576932512B7180038B2D9 /* AppDelegate.swift in Sources */,
+				CC7BC8E4251AEB3F00AC8610 /* MemeTableViewController.swift in Sources */,
+				CC7BC8E7251AEB5F00AC8610 /* MemeCollectionViewController.swift in Sources */,
 				CCE576952512B7180038B2D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +204,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +265,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -295,6 +305,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = williamkhughes.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -313,6 +324,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = williamkhughes.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

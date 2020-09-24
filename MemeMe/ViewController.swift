@@ -153,7 +153,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func save() {
         memeImage = generateMemedImage()
-        _ = MemeStruct.Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
+        let meme = Meme.Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
         }
     
     @IBAction func saveMeme(){
@@ -169,6 +173,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: Dismiss Meme Function
     @IBAction func resetToDefault(_ sender: Any) {
+        if (topTextfield.text == topDefaultText && bottomTextfield.text == bottomDefaultText && imagePickerView.image == nil){
+            dismiss(animated: true, completion: nil)
+        } else {
         shareButton.isEnabled = false
         topTextfield.defaultTextAttributes = memeTextAttributes
         topTextfield.textAlignment = NSTextAlignment.center
@@ -177,5 +184,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextfield.textAlignment = NSTextAlignment.center
         bottomTextfield.text = bottomDefaultText
         imagePickerView.image = nil
+        }
     }
 }
