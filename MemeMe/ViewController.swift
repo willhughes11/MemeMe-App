@@ -153,14 +153,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func save() {
         memeImage = generateMemedImage()
-        let meme = Meme.Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
+        let meme = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
         
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        }
+    }
     
-    @IBAction func saveMeme(){
+    @IBAction func saveMeme(_ sender: Any){
         let memedImage: UIImage = generateMemedImage()
         let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
