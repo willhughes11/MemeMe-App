@@ -20,6 +20,9 @@ class MemeCollectionViewController: UICollectionViewController {
         return appDelegate.memes
     }
     
+    override func viewDidLoad() {
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         collection.reloadData()
     }
@@ -32,10 +35,17 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.imageViewCell?.image = meme.memedImage
+        cell.contentView.frame = cell.bounds
+        cell.contentView.autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin, .flexibleTopMargin, .flexibleHeight, .flexibleBottomMargin]
+        
+        cell.imageViewCell.image = meme.memedImage
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 250, height: 250)
+        }
     
     @IBAction func newMemePage(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

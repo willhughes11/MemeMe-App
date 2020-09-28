@@ -39,15 +39,10 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell")!
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.textLabel?.text = meme.topText + meme.bottomText
+        cell.textLabel?.text = "\(meme.topText) \(meme.bottomText)"
         cell.imageView?.image = meme.memedImage
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = self.storyboard!.instantiateViewController(identifier: "TableViewController") as! MemeTableViewController
-        self.navigationController!.pushViewController(detailController, animated: true)
     }
     
     @IBAction func newMemePage(_ sender: Any) {

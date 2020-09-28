@@ -33,10 +33,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeWidth: -3.0
     ]
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     // MARK: View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func pickAnImageFromCamera(_ sender: Any){
         pickFromSource(.camera)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imagePickerView.image = image
@@ -141,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         navigationController?.setToolbarHidden(true, animated: false)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         navigationController?.setToolbarHidden(false, animated: false)
             
