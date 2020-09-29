@@ -6,7 +6,6 @@
 //  Copyright © 2020 William K Hughes. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
@@ -21,6 +20,8 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        collection.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +48,15 @@ class MemeCollectionViewController: UICollectionViewController {
             return CGSize(width: 250, height: 250)
         }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
     @IBAction func newMemePage(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         self.navigationController!.present(nextViewController, animated:true, completion: nil)
     }
 }

@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     // MARK: Variable Declaration
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -33,6 +33,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeWidth: -3.0
     ]
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setupTextField(bottomTextfield, bottomDefaultText)
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
@@ -123,35 +128,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func hideNavigationBarAndToolBar(hidden: Bool) -> Bool {
+        navigationBar.isHidden = hidden
+        toolbar.isHidden = hidden
+        
+        return hidden
+    }
+    
     // MARK: Meme Generation Functions
     func generateMemedImage() -> UIImage {
-        navigationBar.isHidden = true
-        toolbar.isHidden = true
-            
+        hideNavigationBarAndToolBar(hidden: true)
         navigationController?.setToolbarHidden(true, animated: false)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         navigationController?.setToolbarHidden(false, animated: false)
-            
-        navigationBar.isHidden = false
-        toolbar.isHidden = false
-            
+        hideNavigationBarAndToolBar(hidden: false)
         return memedImage
     }
 
     func save() {
         memeImage = generateMemedImage()
         let meme = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: imagePickerView.image!, memedImage: memeImage!)
-        
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)

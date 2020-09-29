@@ -6,7 +6,6 @@
 //  Copyright © 2020 William K Hughes. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -22,10 +21,13 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        table.reloadData()
         table.rowHeight = 100
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         table.reloadData()
     }
     
@@ -45,9 +47,15 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath:IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
     @IBAction func newMemePage(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         self.navigationController!.present(nextViewController, animated:true, completion: nil)
     }
 }
